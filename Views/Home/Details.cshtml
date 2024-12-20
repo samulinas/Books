@@ -1,0 +1,10 @@
+﻿@model Books.Models.ViewModels.DetailsVM
+
+<img src="/images/books/@Model.Book.Image" height="300" alt="@Model.Book.Title">
+<div>
+    <h5 class="card-title">@Model.Book.Title</h5>
+    <p class="card-text">@Model.Book.Authors</p>
+    <p class="card-text">@Model.Book.Year</p>
+    <br>
+    <p class="card-text">@Html.Raw(@Model.Book.Description)</p>
+</div>

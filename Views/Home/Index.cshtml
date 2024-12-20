@@ -1,0 +1,39 @@
+﻿@model Books.Models.ViewModels.HomeVM
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <button class="btn btn-dark filter-button" data-filter="all">Всі книги</button>
+    @foreach (var obj in Model.Categories) {
+        <button class="btn btn-outline-secondary filter-button" data-filter="@obj.Name.Replace(' ', '_')">@obj.Name</button>
+    }
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        @foreach (var obj in Model.Books) {
+            //all books
+            <partial name="_BookCard" model="obj" />
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+             $('.filter-button').click(function () {
+               var value = $(this).attr('data-filter');
+               if (value == "all") {
+                    $('.filter').show('1000');
+               }
+               else {
+                    $(".filter").not('.' + value).hide('3000');
+                    $('.filter').filter('.' + value).show('3000');
+               }
+             });
+        });
+    </script>
+}
+

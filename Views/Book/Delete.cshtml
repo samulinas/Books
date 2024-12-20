@@ -1,0 +1,75 @@
+﻿@model Books.Models.Book
+
+@{
+    ViewData["Title"] = "Видалення книги";
+}
+
+<h2 class="text-info">Видалення книги</h2>
+
+<form method="post" asp-action="Delete">
+    <input asp-for="BookId" hidden>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Title"></label>
+        </div>
+        <div class="col-8">
+            <input class="form-control" asp-for="Title" type="text" disabled>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Authors"></label>
+        </div>
+        <div class="col-8">
+            <input class="form-control" asp-for="Authors" type="text" disabled>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Description"></label>
+        </div>
+        <div class="col-8">
+            <input class="form-control" asp-for="Description" type="text" disabled>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Year"></label>
+        </div>
+        <div class="col-8">
+            <input class="form-control" asp-for="Year" type="number" disabled>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="CategoryId"></label>
+        </div>
+        <div class="col-8">
+            <input class="form-control" asp-for="CategoryBook.Name" type="text" disabled>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Image"></label>
+        </div>
+        <div class="col-8">
+            <input class="form-control" asp-for="Image" type="text" disabled>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-8 offset-4 row">
+            <div class="col">
+                <input class="btn btn-info w-100" type="submit" value="Видалити">
+            </div>
+            <div class="col">
+                <a class="btn btn-success w-100" asp-action="Index">Назад</a>
+            </div>
+        </div>
+    </div>
+</form>

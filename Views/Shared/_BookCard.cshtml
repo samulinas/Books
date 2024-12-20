@@ -1,0 +1,13 @@
+﻿@model Books.Models.Book
+
+<div class="col-md-4 filter @Model.CategoryBook.Name.Replace(' ', '_')">
+    <div class="card">
+        <img src="/images/books/@Model.Image" class="card-img-top" alt="@Model.Title">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <p class="card-text">@Model.Authors</p>
+            <p class="card-text">@Model.Year</p>
+            <a asp-action="Details" asp-route-id="@Model.BookId" class="btn btn-primary">Детальніше</a>
+        </div>
+    </div>
+</div>

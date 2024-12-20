@@ -1,0 +1,104 @@
+﻿@model Books.Models.ViewModels.BookVM
+
+@{
+    ViewData["Title"] = "Створення книги";
+}
+
+<h2 class="text-info">Створення книги</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Book.Title"></label>
+        </div>
+        <div class="col-8">
+            <span class="text-danger" asp-validation-for="Book.Title"></span>
+            <input class="form-control" asp-for="Book.Title" type="text">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Book.Authors"></label>
+        </div>
+        <div class="col-8">
+            <span class="text-danger" asp-validation-for="Book.Authors"></span>
+            <input class="form-control" asp-for="Book.Authors" type="text">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Book.Description"></label>
+        </div>
+        <div class="col-8">
+            <span class="text-danger" asp-validation-for="Book.Description"></span>
+            <textarea id="summernote" class="form-control" asp-for="Book.Description"></textarea>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Book.Year"></label>
+        </div>
+        <div class="col-8">
+            <span class="text-danger" asp-validation-for="Book.Year"></span>
+            <input class="form-control" asp-for="Book.Year" type="number">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Book.CategoryId"></label>
+        </div>
+        <div class="col-8">
+            <span class="text-danger" asp-validation-for="Book.CategoryId"></span>
+            <select class="form-control" asp-for="Book.CategoryId" asp-items="@Model.CategorySelectList">
+                <option disabled selected>--Оберіть категорію--</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+           Зображення
+        </div>
+        <div class="col-8">
+            <input id="modalBox" type="file" name="files" class="form-control" />
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-8 offset-4 row">
+            <div class="col">
+                <input class="btn btn-info w-100" onclick="return validateInput()" type="submit" value="Створити">
+            </div>
+            <div class="col">
+                <a class="btn btn-success w-100" asp-action="Index">Назад</a>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+            height: 120
+            });
+        });
+        function validateInput() {
+            if (document.getElementById("modalBox").value == "") {
+                Swal.fire({
+                    icon: "error",
+                    title: "Помилка",
+                    text: "Будь ласка, завантажте зображення!"
+                });
+                return false;
+            }
+            return true;
+        } 
+    </script>
+} 

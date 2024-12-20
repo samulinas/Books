@@ -1,0 +1,42 @@
+﻿@model Books.Models.CategoryBook
+
+@{
+    ViewData["Title"] = "Видалення категорії";
+}
+
+<h2 class="text-info">Видалення категорії</h2>
+
+<form method="post" asp-action="Delete">
+    <input asp-for="CategoryId" hidden>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="Name"></label>
+        </div>
+        <div class="col-8">
+            <span class="text-danger" asp-validation-for="Name"></span>
+            <input class="form-control" asp-for="Name" type="text" name="Name" disabled>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-4">
+            <label asp-for="DisplayOrder"></label>
+        </div>
+        <div class="col-8">
+            <span class="text-danger" asp-validation-for="DisplayOrder"></span>
+            <input class="form-control" asp-for="DisplayOrder" type="number" name="DisplayOrder" disabled>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <div class="col-8 offset-4 row">
+            <div class="col">
+                <input class="btn btn-info w-100" type="submit" value="Видалити">
+            </div>
+            <div class="col">
+                <a class="btn btn-success w-100" asp-action="Index">Назад</a>
+            </div>
+        </div>
+    </div>
+</form>
+
